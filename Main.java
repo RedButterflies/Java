@@ -1,38 +1,49 @@
-import java.util.*;
+import java.util.Random;
+
+import static java.lang.Math.sqrt;
 
 public class Main {
     public static void main(String[] args) {
-        String slowo;
-        char litera;
-        System.out.println("Wprowadz litere, ktora chcesz policzyc w lancuchu znakow (wielkosc liter ma znaczenie): ");
-        Scanner sc = new Scanner(System.in);
-        litera = sc.next().charAt(0);
-        System.out.println("Wprowadz lancuch znakow, w ktorym chcesz poszukiwac liter: ");
-        //Scanner xc = new Scanner(System.in);
-        slowo= sc.next().toString();
-        ObecnoscWLancuchu.Ilerazy(litera,slowo);
-        System.out.println("Wprowadz zdanie/slowo,w kotorym chcesz zsumowac znaki ASCII malych liter i liczb ");
-        String lancuch;
-        lancuch=sc.next().toString();
-        SumaASCII.Suma(lancuch);
-        LiczbaNaZnak.liczbaNaZnak();
-        String napis;
-        napis=SzyfrCezara.wczytanieZwracanie();
-        String zaszyfrowanyNapis;
-        zaszyfrowanyNapis=SzyfrCezara.Zaszyfrowanie(napis);
-        System.out.println("Zaszyfrowany napis " + zaszyfrowanyNapis);
-        String napisZaszyfrowany;
-        napisZaszyfrowany=SzyfrCezara.wczytanieZwracanie();
-        String odszyfrowanyNapis;
-        odszyfrowanyNapis=SzyfrCezara.Odszyfrowanie(napisZaszyfrowany);
-        System.out.println("Odszyfrowany napis " + odszyfrowanyNapis);
-        System.out.println("Wprowadz palindorm: ");
-        String palindrom = SzyfrCezara.wczytanieZwracanie();
-        SzyfrCezara.Palindrom(palindrom);
-        System.out.println(BinarnaZerowka.SekwencjaZer(BinarnaZerowka.Pobranie()));
+        int[] tablica;
+        tablica = TablicaJednowymiarowa.wypelnionaTablica();
+        for (int i = 0; i < 100; i++) {
+            System.out.println(tablica[i]);
+        }
+        TablicaJednowymiarowa.wyswietlWKwadracie(tablica);
+        System.out.println("");
+        TablicaDwuwymiarowa.utworzTablice();
+        Random x = new Random();
+        int zakres = x.nextInt(11);
 
+        int[][] tablica2 = new int[3][5];
+        for (int i = 0; i < tablica2.length; i++) {
+            for (int j = 0; j < tablica2[i].length; j++) {
+                tablica2[i][j] = i + j;
+            }
+        }
+        for (int i = 0; i < tablica2.length; i++) {
+            for (int j = 0; j < tablica2[i].length; j++) {
+                System.out.print(tablica2[i][j] + " ");
+            }
+            System.out.println();
+        }
+        TablicaDwuwymiarowa.stosunekSum(tablica2);
 
+        KlasaOkrag [] tablicaOkregow;
+        tablicaOkregow=KlasaOkrag.utworzTabliceOkregow(6);
+        KlasaOkrag.wyswietlObiekt(tablicaOkregow);
+        KlasaOkrag okrag1= tablicaOkregow[0];
+        for(int i=1;i<tablicaOkregow.length;i++)
+        {
+            KlasaOkrag.wzajemnePolozenieOkregow(okrag1,tablicaOkregow[i]);
+            okrag1=tablicaOkregow[i];
+        }
 
 
     }
+
 }
+
+
+
+
